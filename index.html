@@ -82,13 +82,15 @@
             z-index: -1;
         }
 
-        /* Custom Interactive Cursor Trail */
+        /* Avant-Garde Custom Cursor */
         .custom-cursor {
             width: 10px;
             height: 10px;
             background-color: var(--primary);
             border-radius: 50%;
             position: fixed;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 10000;
             transform: translate(-50%, -50%);
@@ -102,10 +104,22 @@
             border: 1px solid rgba(255, 158, 187, 0.4);
             border-radius: 50%;
             position: fixed;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s;
+        }
+
+        /* Disable custom cursor on mobile devices */
+        @media (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+            .custom-cursor, .cursor-follower {
+                display: none;
+            }
         }
 
         /* Floating sparks animation */
@@ -1201,7 +1215,7 @@
                     <!-- Photoshop Before/After Slider Mockup & Slang converter -->
                     <div class="interactive-widget creative-widget-box">
                         <div>
-                            <span style="font-size: 0.7rem; color: var(--primary); display: block; margin-bottom: 5px;">PHOTOSHOP RESOLVER</span>
+                            <span style="font-size: 0.75rem; color: var(--primary); display: block; margin-bottom: 5px;">PHOTOSHOP RESOLVER</span>
                             <div class="compare-slider-container">
                                 <div class="slider-img img-before">Midjourney: Lỗi vẽ 6 ngón tay + chữ nhòe vô nghĩa</div>
                                 <div class="slider-img img-after" id="afterSlider">Photoshop: Vẽ lại tay 5 ngón, làm sạch, chèn logo</div>
@@ -1273,56 +1287,59 @@
         </div>
     </section>
 
-    <!-- Minimal Modern Footer -->
+    <!-- Footer -->
     <footer>
         <a href="#" class="footer-logo-text">Bảo Ngọc<span>.</span></a>
         <div class="footer-meta">Lê Bảo Ngọc // MSV: 25040932 // ULIS-VNU</div>
     </footer>
 
-    <!-- Comprehensive Detailed Task Modal -->
+    <!-- Task Detail Modal -->
     <div class="modal-overlay" id="detailModal">
         <div class="modal-container">
             <span class="btn-close-modal" onclick="closeModal()">&times;</span>
             <div id="modalDataArea" class="modal-data">
-                <!-- Content injected dynamically via Javascript based on tasksData object -->
+                <!-- Content injected dynamically via Javascript based on tasksDetailedDatabase object -->
             </div>
         </div>
     </div>
 
     <!-- Javascript Engine -->
     <script>
-        // Custom Cursor movement with smoothing lag
+        // Immersive Custom Cursor - Bug Resolved by defining "ring" properly
         const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursorFollower');
+        const ring = document.getElementById('cursorFollower');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
             
-            setTimeout(() => {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }, 60);
+            // Safe alignment under requestAnimationFrame
+            requestAnimationFrame(() => {
+                ring.style.left = e.clientX + 'px';
+                ring.style.top = e.clientY + 'px';
+            });
         });
 
         // Hover expand cursor animation for interactive items
-        const targets = document.querySelectorAll('a, button, .bento-box, .step-btn, .source-tab, .prompt-item, .board-card, .btn-close-modal');
-        targets.forEach(item => {
+        const hoverables = document.querySelectorAll('a, button, .bento-box, .step-btn, .source-tab, .prompt-item, .board-card, .btn-close-modal');
+        hoverables.forEach(item => {
             item.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(2.2)';
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
                 cursor.style.backgroundColor = 'var(--secondary)';
-                follower.style.transform = 'translate(-50%, -50%) scale(1.4)';
-                follower.style.borderColor = 'var(--secondary)';
+                ring.style.transform = 'translate(-50%, -50%) scale(1.6)';
+                ring.style.borderColor = 'var(--secondary)';
             });
             item.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.width = '10px';
+                cursor.style.height = '10px';
                 cursor.style.backgroundColor = 'var(--primary)';
-                follower.style.transform = 'translate(-50%, -50%) scale(1)';
-                follower.style.borderColor = 'rgba(255, 158, 187, 0.4)';
+                ring.style.transform = 'translate(-50%, -50%) scale(1)';
+                ring.style.borderColor = 'rgba(255, 158, 187, 0.4)';
             });
         });
 
-        // Sticky header menu effect
+        // Sticky Navbar effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 80) {
@@ -1334,7 +1351,7 @@
 
         // Animate elements on scrolling viewport
         const bentoElements = document.querySelectorAll('.bento-box, .objectives-card, .reflection-panel, .summary-text');
-        const observer = new IntersectionObserver((entries, observer) => {
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     entry.target.style.opacity = 1;
@@ -1348,7 +1365,7 @@
         bentoElements.forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(50px) scale(0.98)';
-            observer.observe(el);
+            scrollObserver.observe(el);
         });
 
         // Generate Sparks dynamically
@@ -1373,9 +1390,9 @@
             6: `<span style="color: var(--accent);">[STEP 6 // COMMAND]:</span> Nhấp chuột phải vào tệp tin "GhiChu.txt" -> chọn [Rename]. Đổi tên chuẩn xác thành: <span style="color: var(--primary);">"GhiChuQuanTrong.txt"</span>.`,
             7: `<span style="color: var(--accent);">[STEP 7 // COMMAND]:</span> Trong thư mục hiện tại, nhấp chuột phải -> chọn [New] -> chọn [Folder]. Khởi tạo cấu trúc cây thư mục con: <span style="color: var(--accent);">"TaiLieu"</span>.`,
             8: `<span style="color: var(--accent);">[STEP 8 // PROCESS]:</span> Sao chép tệp "GhiChuQuanTrong.txt" bằng tổ hợp [Ctrl + C]. Nhấp đúp vào thư mục "TaiLieu" -> Nhấp chuột phải -> chọn [Paste] (hoặc [Ctrl + V]). Bản sao tệp tin đã xuất hiện trong thư mục con.`,
-            9: `<span style="color: var(--accent);">[STEP 9 // PROCESS]:</span> Quay lại thư mục gốc. Tạo tệp văn bản mới "DiChuyen.txt". Nhấp chuột phải -> chọn [Cut] (hoặc [Ctrl + X]). Vào thư mục "TaiLieu", dán bằng [Ctrl + V]. Tệp gốc biến mất tại thư mục cha và chỉ xuất hiện ở thư mục con.`,
+            9: `<span style="color: var(--accent);">[STEP 9 // PROCESS]:</span> Quay lại thư mục gốc. Tạo tệp văn bản mới "DiChuyen.txt". Nhấp chuột phải chọn [Cut] (hoặc [Ctrl + X]). Vào thư mục "TaiLieu", dán bằng [Ctrl + V]. Tệp gốc tại thư mục cha biến mất.`,
             10: `<span style="color: var(--accent);">[STEP 10 // DESTRUCTION]:</span> Trong thư mục "TaiLieu", nhấp chuột phải vào tệp "GhiChuQuanTrong.txt" -> chọn [Delete] để đưa tệp tin vào Thùng Rác (Recycle Bin) của hệ thống.`,
-            11: `<span style="color: var(--accent);">[STEP 11 // DESTRUCTION]:</span> Chọn tệp "DiChuyen.txt". Nhấn tổ hợp phím [Shift + Delete]. Hệ thống hiển thị bảng cảnh báo -> Nhấn xác nhận để xóa tệp vĩnh viễn không lưu Thùng Rác.`,
+            11: `<span style="color: var(--accent);">[STEP 11 // DESTRUCTION]:</span> Chọn tệp "DiChuyen.txt" trong thư mục "TaiLieu", giữ phím [Shift] và nhấn phím [Delete]. Xác nhận hộp thoại để xóa tệp vĩnh viễn.`,
             12: `<span style="color: var(--accent);">[STEP 12 // RECOVERY]:</span> Nhấp đúp biểu tượng Recycle Bin ngoài màn hình chính Desktop. Nhấp chuột phải vào tệp đã xóa "GhiChuQuanTrong.txt" -> chọn [Restore]. Tệp tin khôi phục về lại thư mục gốc "TaiLieu".`
         };
 
@@ -1395,7 +1412,7 @@
                 title: "On the Dangers of Stochastic Parrots (Bender et al., 2021)",
                 meta: "Loại: Bài báo khoa học (FAccT '21: Proceedings of the 2021 ACM Conference). Trích dẫn >3000.",
                 pros: "Cung cấp khung lý thuyết phản biện sắc sảo, phơi bày bản chất dự báo xác suất thô của các mô hình ngôn ngữ lớn (LLM) và cảnh báo sâu sắc về rủi ro đạo đức, ngụy tạo dữ liệu.",
-                cons: "Văn phong học thuật nặng tính thuật toán/toán học xác suất phức tạp, gây trở ngại cho người tiếp cận từ nền tảng thuần ngôn ngữ học."
+                cons: "Văn phong học thuật nặng tính thuật toán/toán học xác suất phức tạp, gây trở ngại cho người học thuần ngôn ngữ học."
             },
             {
                 title: "Tạp chí Nghiên cứu Nước ngoài (VNU Journal of Foreign Studies, 2023)",
@@ -1526,7 +1543,7 @@
         const ethicalSlices = [
             {
                 title: "VÙNG XANH (NÊN LÀM - AI TRỢ LÝ HỢP LÝ)",
-                desc: "Sử dụng AI giải thích các khái niệm triết học/ngôn ngữ khó hiểu, nhờ sửa lỗi ngữ pháp, chính tả, tối ưu hóa câu văn tiếng Anh. Brainstorm ý tưởng thô sơ và tạo các chuỗi từ khóa Boolean để tìm kiếm học thuật chính thống."
+                desc: "Sử dụng AI giải thích các khái niệm triết học/ngôn ngữ học khó hiểu, nhờ sửa lỗi ngữ pháp, chính tả, tối ưu hóa câu văn tiếng Anh. Brainstorm ý tưởng thô sơ và tạo các chuỗi từ khóa Boolean để tìm kiếm học thuật chính thống."
             },
             {
                 title: "VÙNG ĐỎ (CẤM LÀM - GIAN LẬN HỌC THUẬT)",
