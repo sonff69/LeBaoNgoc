@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảo Ngọc's Immersive Space | Digital Portfolio</title>
+    <title>Bảo Ngọc | Digital Space Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,18 +12,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Modern CSS Architecture & Variables */
+        /* Modern Premium CSS Architecture */
         :root {
-            --primary: #ff9ebb; /* Pink Star Theme */
-            --primary-glow: rgba(255, 158, 187, 0.4);
-            --secondary: #ffd3b6; /* Soft Warm Gold/Peach */
-            --accent: #80f3b9; /* Emerald Green Accent */
-            --bg-wine: #120307; /* Dark Burgundy base */
-            --card-glass: rgba(26, 5, 11, 0.8);
-            --border-glass: rgba(255, 158, 187, 0.18);
+            --primary: #ff9ebb; /* Dreamy Pink */
+            --primary-glow: rgba(255, 158, 187, 0.45);
+            --secondary: #ffd3b6; /* Peach Gold */
+            --accent: #80f3b9; /* Emerald Green */
+            --bg-wine: #0d0206; /* Rich Deep Burgundy */
+            --card-glass: rgba(18, 5, 11, 0.78);
+            --border-glass: rgba(255, 158, 187, 0.22);
             --font-mono: 'Fira Code', monospace;
             --font-serif: 'Playfair Display', serif;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -42,10 +42,10 @@
             color: #ffffff;
             overflow-x: hidden;
             line-height: 1.6;
-            cursor: none; /* Interactive custom cursor */
+            cursor: none; /* Immersive cursor */
         }
 
-        /* Fixed Background (No filter used, preserves the original back.jpg stars) */
+        /* Fixed Background (Original back.jpg, strictly no blur filter directly on it) */
         .background-canvas {
             position: fixed;
             top: 0;
@@ -59,14 +59,14 @@
             z-index: -3;
         }
 
-        /* Gradient mask for high readability without blurring */
+        /* Ambient subtle mask to elevate text readability and maintain raw background beauty */
         .ambient-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(18, 3, 7, 0.6) 0%, rgba(18, 3, 7, 0.88) 100%);
+            background: radial-gradient(circle at center, rgba(13, 2, 6, 0.55) 0%, rgba(13, 2, 6, 0.88) 100%);
             z-index: -2;
         }
 
@@ -76,21 +76,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(rgba(255, 158, 187, 0.04) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image: radial-gradient(rgba(255, 158, 187, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
             pointer-events: none;
             z-index: -1;
         }
 
-        /* Avant-Garde Custom Cursor */
+        /* Custom Interactive Cursors */
         .custom-cursor {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: var(--primary);
             border-radius: 50%;
             position: fixed;
-            top: 0;
-            left: 0;
             pointer-events: none;
             z-index: 10000;
             transform: translate(-50%, -50%);
@@ -99,46 +97,40 @@
         }
 
         .cursor-follower {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255, 158, 187, 0.4);
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 158, 187, 0.5);
             border-radius: 50%;
             position: fixed;
-            top: 0;
-            left: 0;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s;
+            transition: transform 0.1s ease-out, border-color 0.3s;
         }
 
         /* Disable custom cursor on mobile devices */
         @media (pointer: coarse) {
-            body {
-                cursor: auto;
-            }
-            .custom-cursor, .cursor-follower {
-                display: none;
-            }
+            body { cursor: auto; }
+            .custom-cursor, .cursor-follower { display: none; }
         }
 
-        /* Floating sparks animation */
+        /* Floating Sparks */
         .spark {
             position: absolute;
             background-color: var(--primary);
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.5;
-            animation: floatSpark 12s infinite linear;
+            opacity: 0.6;
+            animation: floatSpark 15s infinite linear;
         }
 
-        /* Minimal Sticky Navigation Header */
+        /* Premium Navigation Bar */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 25px 6%;
+            padding: 30px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -148,14 +140,14 @@
 
         header.sticky {
             padding: 15px 6%;
-            background: rgba(18, 3, 7, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(13, 2, 6, 0.95);
+            backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border-glass);
         }
 
         .logo {
             font-family: var(--font-serif);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
             text-decoration: none;
             color: #ffffff;
@@ -171,7 +163,7 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 35px;
+            gap: 40px;
         }
 
         nav a {
@@ -194,7 +186,7 @@
             text-decoration: none;
             color: var(--primary);
             border: 1px solid var(--primary);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 50px;
             background: rgba(255, 158, 187, 0.05);
             transition: var(--transition);
@@ -211,33 +203,33 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 140px 6% 60px 6%;
+            padding: 150px 6% 60px 6%;
             position: relative;
         }
 
         .hero-layout {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 60px;
             width: 100%;
             align-items: center;
         }
 
         .hero-badge {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             display: inline-block;
         }
 
         .hero-title {
             font-family: var(--font-serif);
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 800;
-            line-height: 1.05;
+            line-height: 1.02;
             letter-spacing: -2px;
             margin-bottom: 25px;
         }
@@ -249,10 +241,10 @@
         }
 
         .hero-description {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 35px;
-            max-width: 600px;
+            margin-bottom: 40px;
+            max-width: 620px;
             text-align: justify;
         }
 
@@ -263,12 +255,12 @@
         }
 
         .hero-blob {
-            width: 320px;
-            height: 360px;
-            background: linear-gradient(135deg, rgba(255, 158, 187, 0.15) 0%, rgba(255, 211, 182, 0.15) 100%);
-            border: 1px dashed rgba(255, 158, 187, 0.3);
+            width: 340px;
+            height: 380px;
+            background: linear-gradient(135deg, rgba(255, 158, 187, 0.18) 0%, rgba(255, 211, 182, 0.18) 100%);
+            border: 1px dashed rgba(255, 158, 187, 0.35);
             border-radius: 54% 46% 40% 60% / 55% 43% 57% 45%;
-            padding: 12px;
+            padding: 15px;
             animation: morphBlob 10s infinite alternate;
         }
 
@@ -277,57 +269,57 @@
             height: 100%;
             object-fit: cover;
             border-radius: inherit;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
         }
 
-        /* Multi-dimensional Portfolio Objectives Card */
+        /* Portfolio Objectives Section */
         .objectives-card {
             background: var(--card-glass);
             border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 28px;
+            padding: 45px;
             margin: 40px 6% 0 6%;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(25px);
         }
 
         .objectives-card h3 {
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--secondary);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .objectives-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 40px;
         }
 
         .objective-item {
             border-left: 2px solid var(--primary);
-            padding-left: 20px;
+            padding-left: 25px;
         }
 
         .objective-item h4 {
             font-family: var(--font-mono);
             font-size: 0.9rem;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .objective-item p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.6);
             text-align: justify;
         }
 
-        /* Dynamic Google Drive Callout */
+        /* Google Drive Anchored Callout */
         .drive-callout {
-            padding: 60px 6% 30px 6%;
+            padding: 80px 6% 40px 6%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -335,68 +327,68 @@
 
         .drive-callout span {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
         }
 
         .drive-action-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 2.4rem;
             font-weight: 600;
             color: #ffffff;
             text-decoration: none;
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             transition: var(--transition);
         }
 
         .drive-action-btn:hover {
             color: var(--secondary);
             border-bottom-color: var(--secondary);
-            transform: translateX(10px);
+            transform: translateX(12px);
         }
 
-        /* Interactive Bento Grid Layout */
+        /* Bento Grid Layout Section */
         .tasks-section {
-            padding: 40px 6% 100px 6%;
+            padding: 40px 6% 120px 6%;
         }
 
         .section-title {
             font-family: var(--font-serif);
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .asymmetric-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 30px;
+            gap: 35px;
         }
 
         /* Bento Card Architecture */
         .bento-box {
             background: var(--card-glass);
             border: 1px solid var(--border-glass);
-            border-radius: 28px;
-            padding: 35px;
+            border-radius: 32px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(25px);
             transition: var(--transition);
         }
 
         .bento-box:hover {
-            border-color: rgba(255, 158, 187, 0.4);
-            transform: translateY(-6px) scale(1.005);
-            box-shadow: 0 15px 35px rgba(255, 158, 187, 0.08);
+            border-color: rgba(255, 158, 187, 0.5);
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 20px 45px rgba(255, 158, 187, 0.12);
         }
 
         /* Structural Map */
@@ -405,11 +397,11 @@
 
         .task-tag {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--primary);
             background: rgba(255, 158, 187, 0.08);
             border: 1px solid rgba(255, 158, 187, 0.2);
-            padding: 4px 12px;
+            padding: 5px 15px;
             border-radius: 50px;
             width: fit-content;
             margin-bottom: 25px;
@@ -418,44 +410,44 @@
 
         .task-title {
             font-family: var(--font-serif);
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 600;
             line-height: 1.15;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .task-intro {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-align: justify;
         }
 
-        /* Immersive Custom Interactive Widgets inside Bento Cards */
+        /* Custom Interactive Widgets inside Bento Cards */
         .interactive-widget {
-            background: rgba(12, 3, 6, 0.65);
-            border: 1px solid rgba(255, 158, 187, 0.12);
-            border-radius: 18px;
-            padding: 25px;
-            margin-bottom: 30px;
+            background: rgba(12, 3, 6, 0.75);
+            border: 1px solid rgba(255, 158, 187, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 35px;
         }
 
         /* WIDGET 1: Terminal 12 Bước (Task 1) */
         .terminal-container {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #d8f5e5;
         }
 
         .terminal-header {
             display: flex;
-            gap: 6px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 158, 187, 0.1);
-            padding-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 158, 187, 0.12);
+            padding-bottom: 12px;
         }
 
-        .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .terminal-dot { width: 11px; height: 10px; border-radius: 50%; }
         .td-red { background: #ff5f56; }
         .td-yellow { background: #ffbd2e; }
         .td-green { background: #27c93f; }
@@ -463,18 +455,18 @@
         .terminal-navigator {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .step-btn {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            background: rgba(255, 158, 187, 0.05);
-            border: 1px solid rgba(255, 158, 187, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 158, 187, 0.15);
             color: var(--text-light);
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -486,34 +478,36 @@
         }
 
         .terminal-screen {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
-            border-radius: 8px;
-            min-height: 80px;
-            border-left: 2px solid var(--accent);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            min-height: 100px;
+            border-left: 3px solid var(--accent);
+            text-align: left;
+            line-height: 1.6;
         }
 
         /* WIDGET 2: Scholar Matrix Critic Slider (Task 2) */
         .matrix-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .source-selector {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             overflow-x: auto;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
 
         .source-tab {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             white-space: nowrap;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 158, 187, 0.1);
-            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 158, 187, 0.12);
+            padding: 8px 16px;
             border-radius: 30px;
             color: var(--text-muted);
             cursor: pointer;
@@ -527,78 +521,169 @@
         }
 
         .matrix-critic-panel {
-            background: rgba(0,0,0,0.3);
-            border: 1px dashed rgba(255, 158, 187, 0.15);
-            padding: 20px;
-            border-radius: 12px;
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed rgba(255, 158, 187, 0.2);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: left;
         }
 
         .critic-header {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             color: var(--secondary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
-        .critic-pros { color: var(--accent); font-size: 0.9rem; margin-top: 8px; }
-        .critic-cons { color: var(--primary); font-size: 0.9rem; margin-top: 4px; }
+        .critic-pros { color: var(--accent); font-size: 0.95rem; margin-top: 10px; }
+        .critic-cons { color: var(--primary); font-size: 0.95rem; margin-top: 6px; }
 
         /* WIDGET 3: Live Prompt Comparative Terminal (Task 3) */
         .prompt-live-box {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 30px;
         }
 
         .prompt-menu {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .prompt-item {
-            font-size: 0.85rem;
-            padding: 10px 15px;
+            font-size: 0.9rem;
+            padding: 12px 18px;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 158, 187, 0.1);
-            border-radius: 8px;
+            border: 1px solid rgba(255, 158, 187, 0.12);
+            border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
             text-align: left;
+            color: var(--text-muted);
         }
 
         .prompt-item.active {
             border-color: var(--primary);
             background: rgba(255, 158, 187, 0.08);
-            color: var(--primary);
+            color: #ffffff;
+        }
+
+        .prompt-panel-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .prompt-comparison {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255, 158, 187, 0.15);
-            border-radius: 12px;
-            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 158, 187, 0.18);
+            border-radius: 16px;
+            padding: 25px;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             overflow-y: auto;
             max-height: 250px;
+            text-align: left;
+        }
+
+        /* Beautiful Dynamic Bar Charts inside Task 3 */
+        .analytics-chart {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 158, 187, 0.1);
+            border-radius: 16px;
+            padding: 18px 25px;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .chart-label {
+            width: 80px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .chart-bar-bg {
+            flex-grow: 1;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .chart-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+            width: 0%; /* Dynamic update */
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .chart-val {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            width: 30px;
+            text-align: right;
         }
 
         /* WIDGET 4: Live Kanban & Communication Board (Task 4) */
         .board-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .board-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 158, 187, 0.15);
+            padding-bottom: 10px;
+        }
+
+        .board-tab {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 4px 12px;
+            transition: var(--transition);
+        }
+
+        .board-tab.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .board-content-view {
+            min-height: 180px;
+        }
+
+        /* Trello columns */
+        .trello-view {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
         }
 
-        .board-column {
+        .trello-column {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 158, 187, 0.08);
+            border: 1px solid rgba(255, 158, 187, 0.1);
             border-radius: 12px;
             padding: 12px;
         }
 
-        .board-col-title {
+        .trello-col-title {
             font-family: var(--font-mono);
             font-size: 0.7rem;
             color: var(--primary);
@@ -609,37 +694,108 @@
             text-align: center;
         }
 
-        .board-card {
-            background: rgba(26, 5, 11, 0.8);
-            border: 1px solid rgba(255, 158, 187, 0.12);
+        .trello-card {
+            background: rgba(26, 5, 11, 0.9);
+            border: 1px solid rgba(255, 158, 187, 0.15);
             border-radius: 8px;
             padding: 10px;
             font-size: 0.75rem;
             margin-bottom: 10px;
-            cursor: grab;
-            transition: var(--transition);
+            text-align: left;
         }
 
-        .board-card:hover {
-            border-color: var(--primary);
-            transform: scale(1.02);
+        /* Discord Sim */
+        .discord-view {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 158, 187, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .discord-sidebar {
+            background: rgba(26, 5, 11, 0.9);
+            border-right: 1px solid rgba(255, 158, 187, 0.1);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .discord-channel {
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .discord-channel.active {
+            background: rgba(255, 158, 187, 0.1);
+            color: #ffffff;
+        }
+
+        .discord-chat {
+            padding: 15px;
+            font-size: 0.8rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .discord-msg {
+            display: flex;
+            gap: 10px;
+        }
+
+        .discord-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .discord-msg-content strong {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        /* Drive Sim */
+        .drive-view {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-align: left;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 158, 187, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .drive-folder {
+            margin-left: 20px;
+            border-left: 1px dashed rgba(255, 158, 187, 0.2);
+            padding-left: 10px;
+            margin-top: 5px;
         }
 
         /* WIDGET 5: Slang Transformer & Image Compare (Task 5) */
         .creative-widget-box {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 20px;
+            gap: 30px;
             align-items: center;
         }
 
         .compare-slider-container {
             position: relative;
             width: 100%;
-            height: 200px;
-            border-radius: 12px;
+            height: 220px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 158, 187, 0.2);
+            border: 1px solid rgba(255, 158, 187, 0.22);
         }
 
         .slider-img {
@@ -649,20 +805,22 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-weight: 600;
-            font-size: 0.9rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            font-size: 0.95rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+            padding: 20px;
         }
 
         .img-before {
-            background: #401018;
+            background: #410d18;
             color: var(--primary);
         }
 
         .img-after {
-            background: #104028;
+            background: #0d4128;
             color: var(--accent);
             width: 50%; /* Animated via range input */
             border-right: 2px solid #ffffff;
@@ -670,29 +828,30 @@
 
         .slider-control {
             width: 100%;
-            margin-top: 10px;
+            margin-top: 15px;
             accent-color: var(--primary);
         }
 
         .slang-transformer-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px dashed rgba(255, 158, 187, 0.15);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.85rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed rgba(255, 158, 187, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            text-align: left;
         }
 
         /* WIDGET 6: Interactive Ethical AI Compass (Task 6) */
         .ethical-wheel-container {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
-            gap: 20px;
+            gap: 30px;
             align-items: center;
         }
 
         .rotating-compass-circle {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 2px dashed var(--primary);
             display: flex;
@@ -701,6 +860,7 @@
             position: relative;
             animation: spinDeco 25s infinite linear;
             cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 158, 187, 0.1);
         }
 
         .rotating-compass-circle:hover {
@@ -709,7 +869,7 @@
         }
 
         .compass-needle {
-            width: 50px;
+            width: 55px;
             height: 2px;
             background: #ffffff;
             position: absolute;
@@ -720,19 +880,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255, 158, 187, 0.1);
-            padding-top: 20px;
+            border-top: 1px solid rgba(255, 158, 187, 0.12);
+            padding-top: 25px;
             margin-top: auto;
         }
 
         .btn-expander {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #ffffff;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             border-bottom: 1px dashed var(--primary);
             padding-bottom: 2px;
             transition: var(--transition);
@@ -1132,7 +1292,7 @@
                             <div class="critic-header">On the Dangers of Stochastic Parrots (Bender et al., 2021)</div>
                             <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent);">Độ tin cậy: Tuyệt đối (Stanford/Google, xuất bản ACM uy tín, trích dẫn >3000)</div>
                             <p class="critic-pros"><strong>Ưu điểm nổi bật:</strong> Cung cấp khung lý thuyết phản biện mạnh mẽ về bản chất xác suất của máy tính và sai lệch dữ liệu.</p>
-                            <p class="critic-cons"><strong>Nhược điểm/Hạn chế:</strong> Sử dụng quá nhiều thuật ngữ toán học/thuật toán phức tạp, gây rào cản cho người học thuần túy ngôn ngữ.</p>
+                            <p class="critic-cons"><strong>Nhược điểm/Hạn chế:</strong> Sử dụng quá nhiều thuật ngữ toán học/thuật toán phức tạp, gây rào cản cho người học thuần tùy ngôn ngữ học.</p>
                         </div>
                     </div>
                 </div>
@@ -1159,11 +1319,33 @@
                             <button class="prompt-item" onclick="switchPrompt(3)">4. Phân tích ngữ âm học /iː/ vs /ɪ/</button>
                             <button class="prompt-item" onclick="switchPrompt(4)">5. Lập ngân sách du lịch 3N2Đ</button>
                         </div>
-                        <div class="prompt-comparison" id="promptResult">
-                            <span style="color: var(--primary);">[PROMPT]:</span> "Dịch thành ngữ 'Lên voi xuống chó' sang tiếng Anh theo 3 văn phong khác nhau: Trang trọng, thân mật, tiếng lóng..."<br><br>
-                            <span style="color: var(--accent);">ChatGPT:</span> Dịch mượt mà ("Ups and downs of life", "Real roller-coaster life"). Giải thích sâu sắc lý thuyết ngôn ngữ học.<br><br>
-                            <span style="color: var(--secondary);">Gemini:</span> Dịch chính xác nhưng phân tích lựa chọn từ vựng còn ngắn, thiếu chiều sâu phản biện ngữ nghĩa.<br><br>
-                            <span style="color: var(--accent);">Copilot:</span> Đưa ra câu tương đương "riches to rags" kèm ví dụ tốt, nhưng văn phong thiên về dịch cơ học rập khuôn.
+                        <div class="prompt-panel-wrapper">
+                            <div class="prompt-comparison" id="promptResult">
+                                <span style="color: var(--primary);">[PROMPT]:</span> "Dịch thành ngữ 'Lên voi xuống chó' sang tiếng Anh theo 3 văn phong khác nhau: Trang trọng, thân mật, tiếng lóng..."<br><br>
+                                <span style="color: var(--accent);">ChatGPT:</span> Dịch mượt mà ("Ups and downs of life", "Real roller-coaster life"). Giải thích sâu sắc lý thuyết ngôn ngữ học.<br><br>
+                                <span style="color: var(--secondary);">Gemini:</span> Dịch chính xác nhưng phân tích lựa chọn từ vựng còn ngắn, thiếu chiều sâu phản biện ngữ nghĩa.<br><br>
+                                <span style="color: var(--accent);">Copilot:</span> Đưa ra câu tương đương "riches to rags" kèm ví dụ tốt, nhưng văn phong thiên về dịch cơ học rập khuôn.
+                            </div>
+                            
+                            <!-- Dynamic Analytics Bar Chart -->
+                            <div class="analytics-chart">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--secondary); display: block; margin-bottom: 12px; text-align: left;">PHÂN TÍCH HIỆU NĂNG MÔ HÌNH (SCENARIO 1)</span>
+                                <div class="chart-row">
+                                    <div class="chart-label">ChatGPT</div>
+                                    <div class="chart-bar-bg"><div class="chart-bar" id="barGPT" style="width: 95%;"></div></div>
+                                    <div class="chart-val">9.5</div>
+                                </div>
+                                <div class="chart-row">
+                                    <div class="chart-label">Gemini</div>
+                                    <div class="chart-bar-bg"><div class="chart-bar" id="barGemini" style="width: 80%;"></div></div>
+                                    <div class="chart-val">8.0</div>
+                                </div>
+                                <div class="chart-row">
+                                    <div class="chart-label">Copilot</div>
+                                    <div class="chart-bar-bg"><div class="chart-bar" id="barCopilot" style="width: 70%;"></div></div>
+                                    <div class="chart-val">7.0</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1183,18 +1365,28 @@
 
                     <!-- Interactive Live Project Dashboard Mockup -->
                     <div class="interactive-widget board-container">
-                        <div class="board-column">
-                            <span class="board-col-title">TRELLO (TO DO)</span>
-                            <div class="board-card">Lên kịch bản Video TikTok 45s</div>
-                            <div class="board-card">Phân bổ ngân sách thiết bị</div>
+                        <div class="board-tabs">
+                            <button class="board-tab active" onclick="switchBoardView('trello')">TRELLO</button>
+                            <button class="board-tab" onclick="switchBoardView('discord')">DISCORD</button>
+                            <button class="board-tab" onclick="switchBoardView('drive')">DRIVE FOLDER</button>
                         </div>
-                        <div class="board-column">
-                            <span class="board-col-title">DISCORD (#THÔNG-BÁO)</span>
-                            <div class="board-card" style="border-color: var(--primary);">[Leader Ngọc]: Ghim lịch họp & Thread logo HÍMASSIAN</div>
-                        </div>
-                        <div class="board-column">
-                            <span class="board-col-title">DRIVE DIRECTORY</span>
-                            <div class="board-card" style="font-family: var(--font-mono); font-size: 0.65rem;">01_MANAGEMENT/<br>02_CONTENT_RESOURCE/</div>
+                        <div class="board-content-view" id="boardView">
+                            <!-- Trello View Default -->
+                            <div class="trello-view">
+                                <div class="trello-column">
+                                    <span class="trello-col-title">TO DO</span>
+                                    <div class="trello-card">Lên kịch bản Video TikTok 45s</div>
+                                    <div class="trello-card">Phân bổ ngân sách thiết bị</div>
+                                </div>
+                                <div class="trello-column">
+                                    <span class="trello-col-title">IN PROGRESS</span>
+                                    <div class="trello-card">Thiết kế logo nhóm</div>
+                                </div>
+                                <div class="trello-column">
+                                    <span class="trello-col-title">DONE</span>
+                                    <div class="trello-card" style="border-left: 2px solid var(--accent);">Định hướng cốt lõi</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1305,7 +1497,7 @@
 
     <!-- Javascript Engine -->
     <script>
-        // Immersive Custom Cursor - Bug Resolved by defining "ring" properly
+        // Custom Micro-Cursors - Safe alignment using requestAnimationFrame
         const cursor = document.getElementById('cursor');
         const ring = document.getElementById('cursorFollower');
 
@@ -1313,7 +1505,6 @@
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
             
-            // Safe alignment under requestAnimationFrame
             requestAnimationFrame(() => {
                 ring.style.left = e.clientX + 'px';
                 ring.style.top = e.clientY + 'px';
@@ -1321,8 +1512,8 @@
         });
 
         // Hover expand cursor animation for interactive items
-        const hoverables = document.querySelectorAll('a, button, .bento-box, .step-btn, .source-tab, .prompt-item, .board-card, .btn-close-modal');
-        hoverables.forEach(item => {
+        const targets = document.querySelectorAll('a, button, .bento-box, .step-btn, .source-tab, .prompt-item, .board-card, .btn-close-modal');
+        targets.forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '20px';
                 cursor.style.height = '20px';
@@ -1473,50 +1664,126 @@
             event.target.classList.add('active');
         }
 
-        /* Task 3 Prompt Engineering Comparative Live Console Logic */
+        /* Task 3 Prompt Engineering Comparative Live Console Logic & Charts dynamic updates */
         const promptsExecution = [
             {
                 prompt: `"Dịch thành ngữ tiếng Việt 'Lên voi xuống chó' sang tiếng Anh theo 3 văn phong khác nhau: Trang trọng, thân mật, tiếng lóng..."`,
-                comparative: `<span style="color: var(--accent);">ChatGPT:</span> Dịch hoàn hảo ("To rise to great heights and fall to rock bottom", "Real roller-coaster life"). Phân tích sâu sắc sắc thái ngữ nghĩa của từ vựng.<br><br>
-                <span style="color: var(--secondary);">Gemini:</span> Dịch chính xác nghĩa đen và nghĩa bóng, tuy nhiên phần phân tích ngữ cảnh còn ngắn, chưa thể hiện tính học thuật đối chiếu.<br><br>
-                <span style="color: var(--accent);">Copilot:</span> Sử dụng cấu trúc "From riches to rags" khá tốt, nhưng văn phong thiên về giải nghĩa cơ học thô, thiếu đi sự mềm dẻo từ vựng.`
+                comparative: `<span style="color: var(--primary);">[PROMPT]:</span> "Dịch thành ngữ 'Lên voi xuống chó' sang tiếng Anh theo 3 văn phong khác nhau: Trang trọng, thân mật, tiếng lóng..."<br><br>
+                <span style="color: var(--accent);">ChatGPT:</span> Dịch mượt mà ("Ups and downs of life", "Real roller-coaster life"). Giải thích sâu sắc lý thuyết ngôn ngữ học.<br><br>
+                <span style="color: var(--secondary);">Gemini:</span> Dịch chính xác nhưng phân tích lựa chọn từ vựng còn ngắn, thiếu chiều sâu phản biện ngữ nghĩa.<br><br>
+                <span style="color: var(--accent);">Copilot:</span> Đưa ra câu tương đương "riches to rags" kèm ví dụ tốt, nhưng văn phong thiên về dịch cơ học rập khuôn.`,
+                scores: { gpt: 95, gemini: 80, copilot: 70 }
             },
             {
                 prompt: `"Viết một bức thư ngắn (khoảng 150 chữ) gửi cho chính bản thân bạn của 10 năm sau sử dụng ẩn dụ hoa sen/hoa đào. Tuyệt đối không dùng các từ: 'hy vọng', 'ước mơ', 'thành công'..."`,
-                comparative: `<span style="color: var(--accent);">ChatGPT:</span> Hành văn giàu tính suy tưởng, lồng ghép ẩn dụ hoa đào tinh tế. Đôi khi bị lọt một từ cấm nếu không đặt điều kiện lọc khắt khe lúc ban đầu.<br><br>
+                comparative: `<span style="color: var(--primary);">[PROMPT]:</span> "Viết một bức thư ngắn (khoảng 150 chữ) gửi cho chính bản thân bạn của 10 năm sau sử dụng ẩn dụ hoa sen/hoa đào. Tuyệt đối không dùng các từ: 'hy vọng', 'ước mơ', 'thành công'..."<br><br>
+                <span style="color: var(--accent);">ChatGPT:</span> Hành văn giàu tính suy tưởng, lồng ghép ẩn dụ hoa đào tinh tế. Đôi khi bị lọt một từ cấm nếu không đặt điều kiện lọc khắt khe lúc ban đầu.<br><br>
                 <span style="color: var(--secondary);">Gemini:</span> Văn phong mượt mà như lời tâm sự cá nhân cực tốt, tuy nhiên cần người học kiểm chứng kỹ các điều kiện ràng buộc từ ngữ để tránh máy vi phạm.<br><br>
-                <span style="color: var(--accent);">Copilot:</span> Tuân thủ tuyệt đối 100% tất cả các từ cấm nhờ bộ lọc logic hệ thống cực chặt chẽ, bù lại văn phong hơi khô khan, thiếu bay bổng nghệ thuật.`
+                <span style="color: var(--accent);">Copilot:</span> Tuân thủ tuyệt đối 100% tất cả các từ cấm nhờ bộ lọc logic hệ thống cực chặt chẽ, bù lại văn phong hơi khô khan, thiếu bay bổng nghệ thuật.`,
+                scores: { gpt: 80, gemini: 75, copilot: 95 }
             },
             {
                 prompt: `"Có ý kiến cho rằng: 'Việc sinh viên ngoại ngữ sử dụng AI để dịch bài sẽ làm thui chột khả năng tư duy ngôn ngữ'. Hãy đưa ra 3 luận điểm ủng hộ và 3 luận điểm phản bác..."`,
-                comparative: `<span style="color: var(--accent);">ChatGPT:</span> Lập luận đa chiều sâu sắc, đi sâu vào phân tích tâm lý ỷ lại công nghệ và sự suy giảm liên kết thần kinh ngôn ngữ.<br><br>
+                comparative: `<span style="color: var(--primary);">[PROMPT]:</span> "Có ý kiến cho rằng: 'Việc sinh viên ngoại ngữ sử dụng AI để dịch bài sẽ làm thui chột khả năng tư duy ngôn ngữ'. Hãy đưa ra 3 luận điểm ủng hộ và 3 luận điểm phản bác..."<br><br>
+                <span style="color: var(--accent);">ChatGPT:</span> Lập luận đa chiều sâu sắc, đi sâu vào phân tích tâm lý ỷ lại công nghệ và sự suy giảm liên kết thần kinh ngôn ngữ.<br><br>
                 <span style="color: var(--secondary);">Gemini:</span> Kết hợp ví dụ thực tế về các xu hướng công nghệ dịch thuật hiện nay cực nhanh nhạy, góc nhìn khách quan, cởi mở.<br><br>
-                <span style="color: var(--accent);">Copilot:</span> Phân loại lập luận rõ ràng, cấu trúc mạch lạc nhưng lập luận an toàn, chưa có tính bứt phá phản biện độc đáo.`
+                <span style="color: var(--accent);">Copilot:</span> Phân loại lập luận rõ ràng, cấu trúc mạch lạc nhưng lập luận an toàn, chưa có tính bứt phá phản biện độc đáo.`,
+                scores: { gpt: 90, gemini: 85, copilot: 75 }
             },
             {
                 prompt: `"Dưới góc độ ngữ âm học (Phonetics), hãy phân biệt sự khác biệt giữa nguyên âm dài /iː/ và nguyên âm ngắn /ɪ/ trong tiếng Anh dựa trên: vị trí của lưỡi, độ mở của miệng và độ căng của cơ môi..."`,
-                comparative: `<span style="color: var(--accent);">ChatGPT:</span> Trình bày chi tiết từng yếu tố cấu âm kèm các cặp từ tối thiểu (minimal pairs) như sheep/ship rất dễ hiểu.<br><br>
+                comparative: `<span style="color: var(--primary);">[PROMPT]:</span> "Dưới góc độ ngữ âm học (Phonetics), hãy phân biệt sự khác biệt giữa nguyên âm dài /iː/ và nguyên âm ngắn /ɪ/ trong tiếng Anh dựa trên: vị trí của lưỡi, độ mở của miệng và độ căng của cơ môi..."<br><br>
+                <span style="color: var(--accent);">ChatGPT:</span> Trình bày chi tiết từng yếu tố cấu âm kèm các cặp từ tối thiểu (minimal pairs) như sheep/ship rất dễ hiểu.<br><br>
                 <span style="color: var(--secondary);">Gemini:</span> Xuất sắc trong việc cấu trúc hóa kiến thức ngữ âm thành các bảng đối chiếu trực quan (Tense/Lax, Tongue position, Lip tension) rất khoa học.<br><br>
-                <span style="color: var(--accent);">Copilot:</span> Đưa ra lý thuyết ngữ âm chính xác học thuật của đại học, cấu trúc câu trả lời rành mạch nhưng văn phong còn cứng nhắc.`
+                <span style="color: var(--accent);">Copilot:</span> Đưa ra lý thuyết ngữ âm chính xác học thuật của đại học, cấu trúc câu trả lời rành mạch nhưng văn phong còn cứng nhắc.`,
+                scores: { gpt: 88, gemini: 95, copilot: 80 }
             },
             {
                 prompt: `"Lập lịch trình chi tiết đi Hà Nội - Ninh Bình 3 ngày 2 đêm cho nhóm 5 người xuất phát từ Thanh Hóa. Ngân sách: 3 triệu/người (tổng 15 triệu). Yêu cầu tối ưu chi phí và trải nghiệm văn hóa..."`,
-                comparative: `<span style="color: var(--accent);">ChatGPT:</span> Tính toán ngân sách xuất sắc, chi tiết từng khoản di chuyển xe khách (~150k), phòng homestay ghép và phân bổ chi phí ăn uống hợp lý.<br><br>
+                comparative: `<span style="color: var(--primary);">[PROMPT]:</span> "Lập lịch trình chi tiết đi Hà Nội - Ninh Bình 3 ngày 2 đêm cho nhóm 5 người xuất phát từ Thanh Hóa. Ngân sách: 3 triệu/người (tổng 15 triệu). Yêu cầu tối ưu chi phí và trải nghiệm văn hóa..."<br><br>
+                <span style="color: var(--accent);">ChatGPT:</span> Tính toán ngân sách xuất sắc, chi tiết từng khoản di chuyển xe khách (~150k), phòng homestay ghép và phân bổ chi phí ăn uống hợp lý.<br><br>
                 <span style="color: var(--secondary);">Gemini:</span> Gợi ý các địa danh văn hóa, di tích lịch sử và đặc sản Ninh Bình rất chuẩn xác, đậm nét văn hóa bản địa Bắc Bộ.<br><br>
-                <span style="color: var(--accent);">Copilot:</span> Lập kế hoạch chi tiết đến từng buổi (Sáng/Trưa/Chiều/Tối) kèm mức giá lẻ cho từng hoạt động nhưng lịch trình hơi dày và máy móc.`
+                <span style="color: var(--accent);">Copilot:</span> Lập kế hoạch chi tiết đến từng buổi (Sáng/Trưa/Chiều/Tối) kèm mức giá lẻ cho từng hoạt động nhưng lịch trình hơi dày và máy móc.`,
+                scores: { gpt: 95, gemini: 90, copilot: 85 }
             }
         ];
 
         function switchPrompt(idx) {
             const data = promptsExecution[idx];
             const consoleBox = document.getElementById('promptResult');
-            consoleBox.innerHTML = `
-                <span style="color: var(--primary);">[PROMPT]:</span> ${data.prompt}<br><br>
-                ${data.comparative}
-            `;
+            consoleBox.innerHTML = data.comparative;
+
+            // Update Progress Bar
+            document.getElementById('barGPT').style.width = data.scores.gpt + '%';
+            document.getElementById('barGemini').style.width = data.scores.gemini + '%';
+            document.getElementById('barCopilot').style.width = data.scores.copilot + '%';
+
+            document.getElementById('barGPT').parentElement.nextElementSibling.innerText = (data.scores.gpt / 10).toFixed(1);
+            document.getElementById('barGemini').parentElement.nextElementSibling.innerText = (data.scores.gemini / 10).toFixed(1);
+            document.getElementById('barCopilot').parentElement.nextElementSibling.innerText = (data.scores.copilot / 10).toFixed(1);
 
             const items = document.querySelectorAll('.prompt-item');
             items.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        /* Task 4 Multi-view Board Selector Logic */
+        const boardViews = {
+            trello: `
+                <div class="trello-view">
+                    <div class="trello-column">
+                        <span class="trello-col-title">TO DO</span>
+                        <div class="trello-card">Lên kịch bản Video TikTok 45s</div>
+                        <div class="trello-card">Phân bổ ngân sách thiết bị</div>
+                    </div>
+                    <div class="trello-column">
+                        <span class="trello-col-title">IN PROGRESS</span>
+                        <div class="trello-card">Thiết kế logo nhóm</div>
+                    </div>
+                    <div class="trello-column">
+                        <span class="trello-col-title">DONE</span>
+                        <div class="trello-card" style="border-left: 2px solid var(--accent);">Định hướng cốt lõi</div>
+                    </div>
+                </div>
+            `,
+            discord: `
+                <div class="discord-view">
+                    <div class="discord-sidebar">
+                        <span style="font-weight:bold; margin-bottom: 5px;">KÊNH CHAT</span>
+                        <div class="discord-channel active"># thông-báo</div>
+                        <div class="discord-channel"># brainstorming</div>
+                    </div>
+                    <div class="discord-chat">
+                        <div class="discord-msg">
+                            <div class="discord-avatar"></div>
+                            <div class="discord-msg-content">
+                                <strong>Leader Bảo Ngọc</strong> <span style="font-size:0.6rem; color:gray;">hôm nay</span>
+                                <p>Cả nhà check giúp mình 3 phương án logo kim loại trong thread nhé. Tối nay chốt để duyệt sang Canva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            drive: `
+                <div class="drive-view">
+                    📂 [DỰ ÁN] PERSONAL BRAND BLOOM
+                    <div class="drive-folder">
+                        📂 01_MANAGEMENT/<br>
+                        📂 02_CONTENT_RESOURCES/ <br>
+                        <span style="color:var(--primary); margin-left: 15px;">📄 [PBrand]_[Content]_[TikTokScript]_[V1.0_25_05]</span><br>
+                        📂 03_DESIGN_ASSETS/<br>
+                        📂 04_FINAL_DELIVERABLES/
+                    </div>
+                </div>
+            `
+        };
+
+        function switchBoardView(viewName) {
+            const board = document.getElementById('boardView');
+            board.innerHTML = boardViews[viewName];
+
+            const tabs = document.querySelectorAll('.board-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
         }
 
